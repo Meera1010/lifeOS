@@ -43,6 +43,11 @@ class AnalyticsService:
         return {
             "life_score": life_score_data,
             "smart_insights": smart_insights,
+            "tasks_summary": task_stats,
+            "habits_summary": habit_stats,
+            "goals_summary": goal_stats,
+            "finance_summary": finance_summary,
+            "learning_summary": learning_stats,
             "summary_cards": {
                 "tasks": task_stats,
                 "habits": habit_stats,
@@ -56,3 +61,5 @@ class AnalyticsService:
                 "focus_minutes_trend": weekly_focus_trend
             }
         }
+
+    get_dashboard_summary = get_executive_dashboard
