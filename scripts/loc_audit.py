@@ -1,0 +1,73 @@
+"""
+LifeOS Real Source-Code Line-of-Code (LOC) Audit Script
+"""
+
+import os
+import sys
+
+# Directory to audit
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+IGNORE_DIRS = {".git", "__pycache__", "venv", ".pytest_cache", "instance", ".idea", ".vscode", "scratch", ".system_generated"}
+VALID_EXTENSIONS = {".py", ".js", ".css", ".html", ".md", ".json", ".txt", ".example"}
+
+def count_file_loc(filepath):
+    """Counts non-blank lines in a source code file."""
+    lines_count = 0
+    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line_str = line.strip()
+            if line_str: # Non-blank line
+                lines_count += 1
+    return lines_count
+
+def run_loc_audit():
+    total_files = 0
+    total_loc = 0
+    cat_counts = {
+        "Python (Backend, Models, Services, Routes, Tests)": 0,
+        "JavaScript (Frontend UI, Router, Views, API)": 0,
+        "CSS (Stylesheets & Design Tokens)": 0,
+        "HTML (SPA Shell & Templates)": 0,
+        "Documentation & Configuration (.md, .txt, .env)": 0
+    }
+
+    print("======================================================================")
+    print("REAL SOURCE-CODE LOC AUDIT -- LIFEOS PLATFORM")
+    print("======================================================================")
+
+    for root, dirs, files in os.walk(PROJECT_ROOT):
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+        for file in files:
+            ext = os.path.splitext(file)[1].lower()
+            if ext in VALID_EXTENSIONS:
+                filepath = os.path.join(root, file)
+                rel_path = os.path.relpath(filepath, PROJECT_ROOT)
+                file_loc = count_file_loc(filepath)
+                
+                total_files += 1
+                total_loc += file_loc
+
+                if ext == ".py":
+                    cat_counts["Python (Backend, Models, Services, Routes, Tests)"] += file_loc
+                elif ext == ".js":
+                    cat_counts["JavaScript (Frontend UI, Router, Views, API)"] += file_loc
+                elif ext == ".css":
+                    cat_counts["CSS (Stylesheets & Design Tokens)"] += file_loc
+                elif ext == ".html":
+                    cat_counts["HTML (SPA Shell & Templates)"] += file_loc
+                else:
+                    cat_counts["Documentation & Configuration (.md, .txt, .env)"] += file_loc
+
+    print(f"Total Source Code Files Audited: {total_files}")
+    print("----------------------------------------------------------------------")
+    for cat, loc in cat_counts.items():
+        print(f"  * {cat.ljust(50)}: {loc:,} LOC")
+    print("----------------------------------------------------------------------")
+    print(f"TOTAL MEANINGFUL SOURCE-CODE LOC: {total_loc:,} LINES")
+    print("======================================================================")
+
+    return total_files, total_loc, cat_counts
+
+if __name__ == "__main__":
+    run_loc_audit()
