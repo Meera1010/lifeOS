@@ -1,0 +1,36 @@
+/* ==========================================================================
+   LifeOS Achievements CSS — 50+ System Achievements Grid & Tier Styling
+   ========================================================================== */
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.achievement-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.55;
+  filter: grayscale(80%);
+  transition: var(--transition-normal);
+}
+
+.achievement-card.unlocked {
+  opacity: 1;
+  filter: grayscale(0%);
+  border-color: var(--border-color-hover);
+}
+
+.tier-bronze { border-left: 4px solid var(--tier-bronze); }
+.tier-silver { border-left: 4px solid var(--tier-silver); }
+.tier-gold { border-left: 4px solid var(--tier-gold); }
+.tier-platinum { border-left: 4px solid var(--tier-platinum); }
+.tier-diamond { border-left: 4px solid var(--tier-diamond); box-shadow: 0 0 15px rgba(185, 242, 255, 0.2); }

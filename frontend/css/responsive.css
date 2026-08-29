@@ -1,0 +1,33 @@
+/* ==========================================================================
+   LifeOS Responsive CSS Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .dashboard-grid, .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+  .life-score-card, .metrics-row, .chart-card-lg, .insights-card {
+    grid-column: span 12;
+  }
+  .journal-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    bottom: 0;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .navbar-search {
+    width: 200px;
+  }
+  .finance-stats-grid, .admin-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

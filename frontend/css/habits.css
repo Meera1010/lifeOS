@@ -1,0 +1,62 @@
+/* ==========================================================================
+   LifeOS Habit Tracker CSS
+   ========================================================================== */
+
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.habit-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.habit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-warning);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.calendar-matrix-card {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.matrix-cell {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin: 2px;
+  display: inline-block;
+  background-color: var(--bg-tertiary);
+}
+
+.matrix-cell.completed {
+  background-color: var(--accent-success);
+}
+
+.matrix-cell.missed {
+  background-color: var(--accent-danger);
+}

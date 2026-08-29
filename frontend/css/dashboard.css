@@ -1,0 +1,138 @@
+/* ==========================================================================
+   LifeOS Dashboard Specific CSS
+   ========================================================================== */
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.greeting-text {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.subtitle-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Life Score Radial Gauge Card */
+.life-score-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gauge-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 16px 0;
+}
+
+.gauge-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge-score-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.gauge-score-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+/* Quick Metrics Row */
+.metrics-row {
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.metric-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.stat-val {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Productivity Chart Container */
+.chart-card-lg {
+  grid-column: span 8;
+}
+
+.insights-card {
+  grid-column: span 4;
+}
+
+.insight-item {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  border-left: 4px solid var(--accent-primary);
+  margin-bottom: 10px;
+}
+
+.insight-item.success { border-left-color: var(--accent-success); }
+.insight-item.warning { border-left-color: var(--accent-warning); }
+.insight-item.danger { border-left-color: var(--accent-danger); }
+
+.insight-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.insight-msg {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}

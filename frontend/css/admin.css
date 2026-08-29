@@ -1,0 +1,14 @@
+/* ==========================================================================
+   LifeOS Administrator Panel CSS
+   ========================================================================== */
+
+.admin-header {
+  margin-bottom: 24px;
+}
+
+.admin-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeOS — Personal Life Management & Analytics Platform</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/tasks.css">
+  <link rel="stylesheet" href="/css/habits.css">
+  <link rel="stylesheet" href="/css/goals.css">
+  <link rel="stylesheet" href="/css/calendar.css">
+  <link rel="stylesheet" href="/css/finance.css">
+  <link rel="stylesheet" href="/css/learning.css">
+  <link rel="stylesheet" href="/css/focus.css">
+  <link rel="stylesheet" href="/css/journal.css">
+  <link rel="stylesheet" href="/css/analytics.css">
+  <link rel="stylesheet" href="/css/achievements.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#dashboard" class="brand-logo">
+          <div class="brand-icon">L</div>
+          <span>LifeOS</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-title">Core Management</div>
+        <a href="#dashboard" class="nav-item active" data-view="dashboard">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#tasks" class="nav-item" data-view="tasks">
+          <span class="icon">📋</span>
+          <span>Task Manager</span>
+        </a>
+        <a href="#habits" class="nav-item" data-view="habits">
+          <span class="icon">⚡</span>
+          <span>Habit Tracker</span>
+        </a>
+        <a href="#goals" class="nav-item" data-view="goals">
+          <span class="icon">🎯</span>
+          <span>Goal Management</span>
+        </a>
+        <a href="#calendar" class="nav-item" data-view="calendar">
+          <span class="icon">📅</span>
+          <span>Calendar</span>
+        </a>
+
+        <div class="nav-group-title">Life Systems</div>
+        <a href="#finance" class="nav-item" data-view="finance">
+          <span class="icon">💰</span>
+          <span>Finance Manager</span>
+        </a>
+        <a href="#learning" class="nav-item" data-view="learning">
+          <span class="icon">📚</span>
+          <span>Learning Hub</span>
+        </a>
+        <a href="#focus" class="nav-item" data-view="focus">
+          <span class="icon">⏱️</span>
+          <span>Focus & Pomodoro</span>
+        </a>
+        <a href="#journal" class="nav-item" data-view="journal">
+          <span class="icon">📖</span>
+          <span>Journal</span>
+        </a>
+
+        <div class="nav-group-title">Intelligence & System</div>
+        <a href="#analytics" class="nav-item" data-view="analytics">
+          <span class="icon">📈</span>
+          <span>Personal Analytics</span>
+        </a>
+        <a href="#achievements" class="nav-item" data-view="achievements">
+          <span class="icon">🏆</span>
+          <span>Achievements</span>
+        </a>
+        <a href="#profile" class="nav-item" data-view="profile">
+          <span class="icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="#settings" class="nav-item" data-view="settings">
+          <span class="icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+        <a href="#admin" class="nav-item admin-only" id="admin-nav-item" data-view="admin" style="display: none;">
+          <span class="icon">🛡️</span>
+          <span>Admin Panel</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Navbar Header -->
+      <header class="navbar">
+        <div class="navbar-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="global-search-input" class="search-input" placeholder="Search tasks, habits, goals, events...">
+        </div>
+
+        <div class="navbar-actions">
+          <button class="action-btn" id="btn-notifications-toggle" title="Notifications">
+            🔔
+            <span class="badge-dot" id="notif-badge-dot" style="display: none;"></span>
+          </button>
+
+          <div class="user-profile-pill" id="user-profile-menu-btn">
+            <div class="user-avatar" id="nav-user-avatar">A</div>
+            <div class="user-info-text">
+              <span class="user-name" id="nav-user-name">User</span>
+              <span class="user-role" id="nav-user-role">Role</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic View Container -->
+      <main id="main-content" class="view-container">
+        <!-- SPA Pages are dynamically rendered here by router.js -->
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Reusable Modal Container -->
+  <div class="modal-overlay" id="app-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal Title</h3>
+        <button class="action-btn" id="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Modal content dynamically injected -->
+      </div>
+      <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-secondary" id="btn-modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="btn-modal-submit">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Entrypoint & Modules -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
