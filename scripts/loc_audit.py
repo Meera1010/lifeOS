@@ -24,11 +24,13 @@ def count_file_loc(filepath):
 def run_loc_audit():
     total_files = 0
     total_loc = 0
+    prod_loc = 0
     cat_counts = {
-        "Python (Backend, Models, Services, Routes, Tests)": 0,
+        "Python (Backend, Models, Services, Routes)": 0,
         "JavaScript (Frontend UI, Router, Views, API)": 0,
         "CSS (Stylesheets & Design Tokens)": 0,
         "HTML (SPA Shell & Templates)": 0,
+        "Tests (backend/tests)": 0,
         "Documentation & Configuration (.md, .txt, .env)": 0
     }
 
@@ -42,20 +44,33 @@ def run_loc_audit():
             ext = os.path.splitext(file)[1].lower()
             if ext in VALID_EXTENSIONS:
                 filepath = os.path.join(root, file)
-                rel_path = os.path.relpath(filepath, PROJECT_ROOT)
+                rel_path = os.path.relpath(filepath, PROJECT_ROOT).replace("\\", "/")
                 file_loc = count_file_loc(filepath)
                 
                 total_files += 1
                 total_loc += file_loc
 
+                is_test_or_doc = rel_path.startswith("backend/tests/") or rel_path.startswith("docs/") or rel_path.startswith("scripts/")
+
                 if ext == ".py":
-                    cat_counts["Python (Backend, Models, Services, Routes, Tests)"] += file_loc
+                    if rel_path.startswith("backend/tests/"):
+                        cat_counts["Tests (backend/tests)"] += file_loc
+                    else:
+                        cat_counts["Python (Backend, Models, Services, Routes)"] += file_loc
+                        if not is_test_or_doc:
+                            prod_loc += file_loc
                 elif ext == ".js":
                     cat_counts["JavaScript (Frontend UI, Router, Views, API)"] += file_loc
+                    if not is_test_or_doc:
+                        prod_loc += file_loc
                 elif ext == ".css":
                     cat_counts["CSS (Stylesheets & Design Tokens)"] += file_loc
+                    if not is_test_or_doc:
+                        prod_loc += file_loc
                 elif ext == ".html":
                     cat_counts["HTML (SPA Shell & Templates)"] += file_loc
+                    if not is_test_or_doc:
+                        prod_loc += file_loc
                 else:
                     cat_counts["Documentation & Configuration (.md, .txt, .env)"] += file_loc
 
@@ -64,10 +79,11 @@ def run_loc_audit():
     for cat, loc in cat_counts.items():
         print(f"  * {cat.ljust(50)}: {loc:,} LOC")
     print("----------------------------------------------------------------------")
-    print(f"TOTAL MEANINGFUL SOURCE-CODE LOC: {total_loc:,} LINES")
+    print(f"TOTAL PRODUCTION SOURCE-CODE LOC (Excl tests/docs): {prod_loc:,} LINES")
+    print(f"TOTAL ALL-INCLUSIVE SOURCE-CODE LOC              : {total_loc:,} LINES")
     print("======================================================================")
 
-    return total_files, total_loc, cat_counts
+    return total_files, total_loc, prod_loc
 
 if __name__ == "__main__":
     run_loc_audit()

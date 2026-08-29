@@ -1,0 +1,15 @@
+{
+  "name": "lifeos",
+  "version": "1.0.0",
+  "description": "LifeOS - Personal Life Management & Analytics Platform",
+  "main": "main.py",
+  "scripts": {
+    "start": "python run.py",
+    "serve": "python main.py",
+    "build": "python data/init_db.py",
+    "test": "python -m unittest discover -s backend/tests"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {}
+}
